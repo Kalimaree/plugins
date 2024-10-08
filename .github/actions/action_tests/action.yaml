@@ -66,20 +66,20 @@ runs:
       uses: trunk-io/analytics-uploader@main
       with:
         junit-paths: junit.xml
-        org-slug: trunk
+        org-slug: kalimaree
         token: ${{ inputs.trunk-prod-token }}
       continue-on-error: true
       env:
         TRUNK_PUBLIC_API_ADDRESS: https://api.trunk.io
 
-    - name: Upload staging results
-      # TODO(Tyler): Add upload on Windows once the action supports it.
-      if: "!cancelled() && runner.os != 'Windows' && inputs.trunk-staging-token != ''"
-      uses: trunk-io/analytics-uploader@main
-      with:
-        junit-paths: junit.xml
-        org-slug: trunk-staging-org
-        token: ${{ inputs.trunk-staging-token }}
-      continue-on-error: true
-      env:
-        TRUNK_PUBLIC_API_ADDRESS: https://api.trunk-staging.io
+    # - name: Upload staging results
+    #   # TODO(Tyler): Add upload on Windows once the action supports it.
+    #   if: "!cancelled() && runner.os != 'Windows' && inputs.trunk-staging-token != ''"
+    #   uses: trunk-io/analytics-uploader@main
+    #   with:
+    #     junit-paths: junit.xml
+    #     org-slug: trunk-staging-org
+    #     token: ${{ inputs.trunk-staging-token }}
+    #   continue-on-error: true
+    #   env:
+    #     TRUNK_PUBLIC_API_ADDRESS: https://api.trunk-staging.io
